@@ -11,6 +11,12 @@
 Base Styles
 =========*/
 
+body {
+    font-family: "nyt-cheltenham",georgia,"times new roman",times,serif;
+    background: url(https://media.giphy.com/media/ZPXRNopHrMcMw/giphy.gif) no-repeat;
+    background-size: cover;
+}
+
 
 /* Fonts */
 
