@@ -10,10 +10,10 @@ $(document).ready(function(){
     event.preventDefault();
 
     $("#runSearch").on("click", function(){
-            var searchTerm = "obama"; //$('#searchTerm').val();
-            var numRecords = 2;//$('#numRecordsSelect').val();
-            var startYear = "20151010";  //$('#startYear').val();
-            var endYear = "20161010";  //$('#endYear').val();
+            var searchTerm = $('#searchTerm').val();
+            var numRecords = $('#numRecordsSelect').val();
+            var startYear = $('#startYear').val();
+            var endYear = $('#endYear').val();
             var APIKey = "57ddfac8eda34183b33a1b960813d8e1";
             var queryurl = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
@@ -50,7 +50,7 @@ $(document).ready(function(){
             articleDiv.append(link);
             $('#articles').append(articleDiv);
             }
-
+            }
 
         });
     });
