@@ -7,6 +7,7 @@
 */
 $(document).ready(function(){
 
+    event.preventDefault();
 
     $("#runSearch").on("click", function(){
             var searchTerm = "obama"; //$('#searchTerm').val();
