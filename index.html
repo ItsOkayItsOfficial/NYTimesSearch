@@ -2,72 +2,126 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/img/logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
 
-    <title>NYTimes Search</title>
+  <title>NYTimes Search</title>
 
-    <!-- Normalize CSS -->
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <!-- Bootstrap CSS 3.3.7 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Normalize CSS -->
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <!-- Bootstrap CSS 3.3.7 -->
+  <link rel="stylesheet" href="https://bootswatch.com/journal/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
 <body>
 
+  <!-- Navbar -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="https://www.nytimes.com" target="_blank"><image width="360" height="50" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://a1.nyt.com/assets/homepage/20170810-135137/images/foundation/logos/nyt-logo-379x64.svg" src="https://a1.nyt.com/assets/homepage/20170810-135137/images/foundation/logos/nyt-logo-379x64.png" alt="The New York Times" border="0"></image></a>
+        <span class="sr-only">Toggle navigation</span>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Search <span class="sr-only">(current)</span></a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- </nav> -->
+
+  <!-- Main Container -->
+  <div class="container" id="main">
+
+    <!-- Form -->
+    <form class="form-horizontal">
+      <fieldset>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Search</h3>
+          </div>
+          <div class="panel-body">
+            <!-- Search term input -->
+            <div class="form-group">
+              <label for="search" class="col-lg-2 control-label">Search Term:</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="searchTerm" placeholder="Term to be searched">
+              </div>
+            </div>
+            <!-- /Search term input -->
+
+            <!-- Number of hits -->
+            <div class="form-group">
+              <label for="pwd" class="col-lg-2 control-label">Number of Records to Retrieve</label>
+              <div class="col-lg-10">
+                <select class="form-control" id="numRecordsSelect">
+              <option value=1>1</option>
+              <option value=5 selected>5</option>
+              <option value=10>10</option>
+            </select>
+              </div>
+            </div>
+            <!-- /Number of hits -->
+
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Years to Search</h3>
+              </div>
+              <div class="panel-body">
+                <!-- Year start param -->
+                <div class="form-group col-md-6">
+                  <label for="startYear">Start Year (Optional):</label>
+                  <input type="text" class="form-control" id="startYear">
+                </div>
+                <!-- /Year start param -->
+
+                <!-- Year end param -->
+                <div class="form-group col-md-6">
+                  <label for="endYear">End Year (Optional):</label>
+                  <input type="text" class="form-control" id="endYear">
+                </div>
+                <!-- /Year end param -->
+              </div>
+            </div>
+            
+            <!-- Submit button -->
+            <div class="form-group">
+              <div class="col-md-10">
+                <button type="submit" class="btn btn-default" id="runSearch"><i class="fa fa-search"></i> Search</button>
+                <button type="button" class="btn btn-default" id="clearAll"><i class="fa fa-trash"></i> Clear Results</button>
+              </div>
+            </div>
+            <!-- /Submit button -->
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <!-- Returned Articles -->
+    <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Articles</h3>
+        </div>
+        <div class="panel-body" id="id="articles"">
+        </div>
+    </div>
+    <!-- /Returned Articles -->
+
+  </div>
+  <!-- /Main Container -->
 
     <!-- Important jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap Js -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script>
     <!-- Custom Js -->
     <script src="assets/js/custom.js"></script>
-
-<!-- Here we create an HTML Form for handling the inputs-->
-                    <form role="form">
-
-                      <!-- Here we create the text box for capturing the search term-->
-                      <div class="form-group">
-                        <label for="search">Search Term:</label>
-                        <input type="text" class="form-control" id="searchTerm">
-                      </div>
-
-                      <!-- Here we capture the number of records that the user wants to retrieve  -->
-                      <div class="form-group">
-                        <label for="pwd">Number of Records to Retrieve:</label>
-                        <select class="form-control" id="numRecordsSelect">
-                            <option value=1>1</option>
-                            <!-- Setting the option for 5 as default -->
-                            <option value=5 selected>5</option>
-                            <option value=10>10</option>
-                        </select>             
-                      </div>
-
-                      <!-- Here we capture the Start Year Parameter-->
-                      <div class="form-group">
-                        <label for="startYear">Start Year (Optional):</label>
-                        <input type="text" class="form-control" id="startYear">
-                      </div>
-
-                      <!-- Here we capture the End Year Parameter -->
-                      <div class="form-group">
-                        <label for="endYear">End Year (Optional):</label>
-                        <input type="text" class="form-control" id="endYear">
-                      </div>
-                      <div id="articles">
-                      </div>
-                      <!-- Here we have our final submit button -->
-                      <button type="submit" class="btn btn-default" id="runSearch"><i class="fa fa-search"></i> Search</button>
-                      <button type="button" class="btn btn-default" id="clearAll"><i class="fa fa-trash"></i> Clear Results</button>
-                    </form>
                             
 </body>
 
